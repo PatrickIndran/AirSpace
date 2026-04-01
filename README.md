@@ -16,6 +16,10 @@ A P2P mesh sync daemon for [SnapperOS](https://github.com/PatrickIndran), built 
 - Clipboard sync
 - Calendar sync
 
+## Transparency 
+- I am new to python so some of the code might be "shit".
+- This readme has been made by Claude.
+
 ## License
 
 GNU General Public License v3.0 — see [LICENSE](LICENSE).
