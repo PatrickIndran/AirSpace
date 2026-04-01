@@ -1,0 +1,13 @@
+# Replace the placeholder values with your own:
+#   ip_address: run "yggdrasil -useconffile /etc/yggdrasil.conf -getself" to find your Yggdrasil IPv6 address
+#   username:   run "whoami" to find your username
+#   name:       can be anything, hostname is recommended ("hostnamectl" or "hostname")
+
+devices:
+  - name: computer_01
+    username: username
+    ip_address: 200:xxxx:xxxx:xxxx:xxxx:xxxx:xxxx:xxxx
+
+  - name: computer_02
+    username: username
+    ip_address: 200:yyyy:yyyy:yyyy:yyyy:yyyy:yyyy:yyyy
