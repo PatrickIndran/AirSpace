@@ -9,12 +9,17 @@
   in {
     devShells.${system}.default = pkgs.mkShell {
       name = "airspace";
-      packages = with pkgs; [
-        python3
-        python3Packages.pyyaml
-        python3Packages.rich
-        radicale
-      ];
+
+      packages = [
+              (pkgs.python3.withPackages (ps: with ps; [
+                pyyaml
+                rich
+                passlib
+                bcrypt
+              ]))
+              pkgs.radicale
+              pkgs.apacheHttpd
+            ];
 
     };
   };

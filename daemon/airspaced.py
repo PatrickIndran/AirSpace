@@ -4,8 +4,7 @@ import os
 import yaml
 import socket
 import logging
-import radicale
-from radicale import config, log
+from passlib.apache import HtpasswdFile
 
 # ---------------- Logging ----------------
 
@@ -53,22 +52,41 @@ def airspace_list(config, conn):
 # ---------------- Services --------------
 
 # --- Radicale ---
+def airspace_radicale():
+    config_dir = os.path.expanduser("~/.config/AirSpace")
+    htpasswd_file = os.path.join(config_dir, "users.htpasswd")
+    collections_dir = os.path.expanduser("~/Documents/AirSpace/AirSync/.data/radicale/calander")
 
-cfg = config.load([])
+    # 2. Ensure directories exist
+    os.makedirs(config_dir, exist_ok=True)
+    os.makedirs(collections_dir, exist_ok=True)
 
-# Set only what you need
-cfg.set("server", "hosts", "0.0.0.0:5232")
-cfg.set("storage", "filesystem_folder", "/path/to/your/data/collections")
-cfg.set("auth", "type", "htpasswd")
-cfg.set("auth", "htpasswd_filename", "/path/to/users.htpasswd")
-cfg.set("auth", "htpasswd_encryption", "bcrypt")
-cfg.set("rights", "type", "owner_only")
+    print("Setting up Radicale credentials...")
+    try:
+        subprocess.run([
+            "htpasswd", "-B", "-b", "-c", htpasswd_file, "airspace", "airspace"
+        ], check=True)
+        print(f"✅ Credentials set: {htpasswd_file}")
+    except subprocess.CalledProcessError as e:
+        print(f"❌ Error creating htpasswd: {e}")
+        return
 
-application = radicale.Application(cfg, log.start("radicale"))
+    # 4. Define the command to start the server
+    cmd = [
+        "python3", "-m", "radicale",
+        "--config", "",
+        "--server-hosts", "127.0.0.1:5232",
+        "--storage-filesystem-folder", collections_dir,
+        "--auth-type", "htpasswd",
+        "--auth-htpasswd-filename", htpasswd_file,
+        "--auth-htpasswd-encryption", "bcrypt",
+        "--rights-type", "owner_only",
+        "--logging-level", "info"
+    ]
+    subprocess.run(cmd)
 
-print("Radicale running on 0.0.0.0:5232")
-
-
+# Call the function
+airspace_radicale()
 # ---------------- Socket ----------------
 
 if os.path.exists(socket_path):
