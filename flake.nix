@@ -13,6 +13,7 @@
         python3
         python3Packages.pyyaml
         python3Packages.rich
+        radicale
       ];
 
     };

@@ -4,6 +4,8 @@ import os
 import yaml
 import socket
 import logging
+import radicale
+from radicale import config, log
 
 # ---------------- Logging ----------------
 
@@ -47,6 +49,25 @@ def airspace_transfer(config, conn, task):
 # --- List --- #
 def airspace_list(config, conn):
     conn.sendall(json.dumps(config.get("devices", [])).encode('utf-8'))
+
+# ---------------- Services --------------
+
+# --- Radicale ---
+
+cfg = config.load([])
+
+# Set only what you need
+cfg.set("server", "hosts", "0.0.0.0:5232")
+cfg.set("storage", "filesystem_folder", "/path/to/your/data/collections")
+cfg.set("auth", "type", "htpasswd")
+cfg.set("auth", "htpasswd_filename", "/path/to/users.htpasswd")
+cfg.set("auth", "htpasswd_encryption", "bcrypt")
+cfg.set("rights", "type", "owner_only")
+
+application = radicale.Application(cfg, log.start("radicale"))
+
+print("Radicale running on 0.0.0.0:5232")
+
 
 # ---------------- Socket ----------------
 
