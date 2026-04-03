@@ -1,0 +1,62 @@
+using Gtk 4.0;
+using Adw 1;
+
+Adw.Window main_window {
+  default-width: 450;
+  default-height: 600;
+
+  content: Adw.ToastOverlay toast_overlay {
+    child: Adw.StatusPage root_page {
+      title: _("AirSpace");
+      description: _("Sync and Transfer files between your device.");
+
+      child: Box {
+        orientation: vertical;
+        halign: center;
+        valign: center;
+        spacing: 24;
+
+        Image {
+          icon-name: "re.sonny.Workbench";
+          pixel-size: 128;
+          styles ["icon-dropshadow"]
+        }
+
+        Button select_button {
+          label: _("Select Folder & Transfer");
+          halign: center;
+          styles ["pill", "suggested-action"]
+        }
+
+        Button sync_button {
+          label: _("Sync AirSync Folder");
+          halign: center;
+          styles ["pill"]
+        }
+      };
+    };
+  };
+}
+
+Adw.Dialog airfer_dialog {
+  title: _("Select Device");
+  content-width: 360;  /* Fixed: use '-' instead of '_' */
+  content-height: 400; /* Fixed: use '-' instead of '_' */
+
+  child: Adw.ToolbarView {
+    [top]
+    Adw.HeaderBar {}
+
+    content: ScrolledWindow {
+      vexpand: true;
+      child: ListBox device_list {
+        selection-mode: single;
+        margin-top: 12;
+        margin-bottom: 12;
+        margin-start: 12;
+        margin-end: 12;
+        styles ["boxed-list"]
+      };
+    };
+  };
+}
