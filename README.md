@@ -10,6 +10,7 @@ A P2P mesh sync daemon for [SnapperOS](https://github.com/PatrickIndran), built 
 - Device management via `devices.yaml`
 - File sync over Yggdrasil using rsync over SSH
 - File transfer over Yggdrasil using rsync over SSH
+- GUI Client for AirSpace.
 
 ## Planned
 
