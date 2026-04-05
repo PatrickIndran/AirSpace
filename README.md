@@ -4,7 +4,7 @@
 
 A P2P mesh sync daemon for [SnapperOS](https://github.com/PatrickIndran), built on top of [Yggdrasil](https://yggdrasil-network.github.io/). AirSpace runs as a background daemon (`airspaced`) and i[...]  
 
-<img width="1080" height="1080" alt="ddd" src="https://github.com/user-attachments/assets/f63c4b7f-e78e-4345-af3f-652361c8d172" />
+<img width="1080" height="1080" alt="ddd" src="https://github.com/user-attachments/assets/f63c4b7f-e78e-4345-af3f-652361c8d172" /> | width=100)
 
 
 ## What it does right now
