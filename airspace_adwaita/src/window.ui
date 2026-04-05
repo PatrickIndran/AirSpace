@@ -22,8 +22,7 @@ corresponding .blp file and regenerate this file with blueprint-compiler.
                 <property name="valign">3</property>
                 <property name="spacing">24</property>
                 <child>
-                  <object class="GtkImage">
-                    <property name="icon-name">re.sonny.Workbench</property>
+                  <object class="GtkImage" id="logo">
                     <property name="pixel-size">128</property>
                     <style>
                       <class name="icon-dropshadow"/>

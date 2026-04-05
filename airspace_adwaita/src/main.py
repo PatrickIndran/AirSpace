@@ -38,7 +38,6 @@ class AirFerWindow:
             print(f"Error loading UI: {e}")
             return
 
-        # FIXED INDENTATION: Everything below is now properly inside __init__
         self.window = self.builder.get_object("main_window")
         self.toast_overlay = self.builder.get_object("toast_overlay")
         self.sync_button = self.builder.get_object("sync_button")
@@ -49,6 +48,20 @@ class AirFerWindow:
         self.sync_button.connect("clicked", self.on_sync_button_clicked)
         self.select_button.connect("clicked", self.on_select_file_clicked)
         self.device_list.connect("row-activated", self.on_device_row_activated)
+
+        self.logo = self.builder.get_object("logo")
+
+
+        # --- Sets icon ---
+        # Sets the icon of the epic app :)
+
+        base_dir = os.path.dirname(os.path.abspath(__file__))
+        logo_path = os.path.join(base_dir, "..", "data", "assets", "icon.png")
+
+        if os.path.exists(logo_path):
+            self.logo.set_from_file(logo_path)
+        else:
+            print(f"Error: Icon not found at {logo_path}")
 
     # --- AirSync ---
     # Tells the daemon to sync the AirSync folder.
