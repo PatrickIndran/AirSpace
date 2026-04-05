@@ -6,8 +6,9 @@ A P2P mesh sync daemon for [SnapperOS](https://github.com/PatrickIndran), built 
 
 <img width="300" alt="ddd" src="https://github.com/user-attachments/assets/f63c4b7f-e78e-4345-af3f-652361c8d172" />
 
-## What it does right now
+--- 
 
+## Features
 - Daemon + CLI IPC over Unix sockets
 - Device management via `devices.yaml`
 - File sync over Yggdrasil using rsync over SSH
