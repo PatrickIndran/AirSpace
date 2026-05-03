@@ -2,7 +2,7 @@
 
 > **Work in progress.** Expect breaking changes.
 
-A P2P mesh sync daemon for [SnapperOS](https://github.com/PatrickIndran), built on top of [Yggdrasil](https://yggdrasil-network.github.io/). AirSpace runs as a background daemon (`airspaced`) and i[...]  
+A P2P mesh sync daemon for [Ventoo](https://github.com/PatrickIndran/Vento), built on top of [Yggdrasil](https://yggdrasil-network.github.io/). AirSpace runs as a background daemon (`airspaced`) and i[...]  
 
 <img width="300" alt="ddd" src="https://github.com/user-attachments/assets/f63c4b7f-e78e-4345-af3f-652361c8d172" />
 
